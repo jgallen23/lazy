@@ -6,6 +6,7 @@
   <link rel="stylesheet" href="../node_modules/mocha/mocha.css" />
   <script src="../support/assert.js"></script>
   <script src="../node_modules/mocha/mocha.js"></script>
+  <script src="../components/jquery/jquery.js"></script>
   <script>mocha.setup('tdd')</script>
 </head>
 <body>
@@ -16,7 +17,7 @@
   <script src="../dist/lazyload.js"></script>
   <script src="lazyload.test.js"></script>
   <script>
-    mocha.run()
+    mocha.run().globals(['LiveReload', 'fixtureLoaded']);
   </script>
 </body>
 </html>
