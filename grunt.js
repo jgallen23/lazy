@@ -48,12 +48,20 @@ module.exports = function(grunt) {
         tasks: 'default' 
       }
     },
+    reloadr: {
+      all: [
+        '_dist/*',
+        'test/*'
+      ]
+    },
     server:{
       port: 8000,
       base: '.'
     }
   });
   grunt.loadNpmTasks('grunt-mocha');
-  grunt.registerTask('default', 'lint concat min mocha');
-  grunt.registerTask('dev', 'server watch');
+  grunt.loadNpmTasks('grunt-reloadr');
+  grunt.registerTask('default', 'lint concat min');
+  grunt.registerTask('test', 'mocha');
+  grunt.registerTask('dev', 'server reloadr watch');
 };
