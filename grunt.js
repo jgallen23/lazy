@@ -22,18 +22,18 @@ module.exports = function(grunt) {
       dist: {
         src: [
           '<banner>',
-          'lib/lazyload.js'
+          'lib/lazy.js'
         ],
-        dest: 'dist/lazyload.js'
+        dest: 'dist/lazy.js'
       }
     },
     min: {
       dist: {
         src: [
           '<banner>', 
-          'dist/lazyload.js'
+          'dist/lazy.js'
         ],
-        dest: 'dist/lazyload.min.js'
+        dest: 'dist/lazy.min.js'
       }
     },
     mocha: {

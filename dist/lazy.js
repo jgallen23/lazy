@@ -1,3 +1,11 @@
+/*!
+ * lazy - Javascript lazy loading plugin
+ * v0.1.1
+ * https://github.com/jgallen23/lazy
+ * copyright Greg Allen 2012
+ * MIT License
+*/
+
 (function($) {
   var queue;
   var resetQueue = function() {
@@ -28,7 +36,7 @@
   };
 
   resetQueue();
-  $.lazyLoad = function(fn, type, priority) {
+  $.lazy = function(fn, type, priority) {
     if (arguments.length === 0) {
       return queue;
     }
@@ -52,11 +60,11 @@
     });
   };
 
-  $.lazyLoad.reset = function() {
+  $.lazy.reset = function() {
     resetQueue();
   };
 
-  $.lazyLoad.runQueue = function(type) {
+  $.lazy.runQueue = function(type) {
     type = type || 'load';
     runQueue(queue[type]);
   };

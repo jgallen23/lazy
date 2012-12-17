@@ -1,21 +1,21 @@
 
 
-suite('lazyload', function() {
+suite('lazy', function() {
 
   //setup is called after load, so doing setup here
   var called;
-  $.lazyLoad(function() { called = true; });
+  $.lazy(function() { called = true; });
 
   setup(function() {
-    $.lazyLoad.reset();
+    $.lazy.reset();
   });
 
-  test('$.lazyLoad exists', function() {
-    assert(typeof $.lazyLoad, 'function');
+  test('$.lazy exists', function() {
+    assert(typeof $.lazy, 'function');
   });
 
-  test('calling $.lazyLoad() returns queue', function() {
-    var queue = $.lazyLoad();
+  test('calling $.lazy() returns queue', function() {
+    var queue = $.lazy();
     assert.equal(typeof queue, 'object');
     assert.ok(queue.load instanceof Array);
     assert.ok(queue.mouse instanceof Array);
@@ -24,28 +24,28 @@ suite('lazyload', function() {
 
   test('pushes an object with priority and fn', function() {
     var fn = function() {};
-    $.lazyLoad(fn, 'load', 5);
-    var queue = $.lazyLoad();
+    $.lazy(fn, 'load', 5);
+    var queue = $.lazy();
     assert.equal(queue.load.length, 1);
     assert.equal(queue.load[0].priority, 5);
     assert.equal(queue.load[0].fn, fn);
   });
 
-  test('$.lazyLoad.reset() will reset queue', function() {
+  test('$.lazy.reset() will reset queue', function() {
     var fn = function() {};
-    $.lazyLoad(fn, 'load', 5);
-    var queue = $.lazyLoad();
+    $.lazy(fn, 'load', 5);
+    var queue = $.lazy();
     assert.equal(queue.load.length, 1);
-    $.lazyLoad.reset();
-    queue = $.lazyLoad();
+    $.lazy.reset();
+    queue = $.lazy();
     assert.equal(queue.load.length, 0);
   });
 
   test('defaults to on load', function() {
-    $.lazyLoad(function() {
+    $.lazy(function() {
       console.log('load');
     });
-    var queue = $.lazyLoad();
+    var queue = $.lazy();
     assert.equal(queue.load.length, 1);
     assert.equal(queue.mouse.length, 0);
     assert.equal(queue.scroll.length, 0);
@@ -53,18 +53,18 @@ suite('lazyload', function() {
 
 
   test('defaults to priority of 1', function() {
-    $.lazyLoad(function() {
+    $.lazy(function() {
       console.log('load');
     });
-    var queue = $.lazyLoad();
+    var queue = $.lazy();
     assert.equal(queue.load[0].priority, 1);
   });
 
   test('can pass priority without type', function() {
-    $.lazyLoad(function() {
+    $.lazy(function() {
       console.log('load');
     }, 5);
-    var queue = $.lazyLoad();
+    var queue = $.lazy();
     assert.equal(queue.load[0].priority, 5);
   });
 
@@ -73,48 +73,48 @@ suite('lazyload', function() {
   });
 
   test('manually run', function(done) {
-    $.lazyLoad(done);
-    $.lazyLoad.runQueue('load');
+    $.lazy(done);
+    $.lazy.runQueue('load');
   });
 
   test('manually run, default to load', function(done) {
-    $.lazyLoad(done);
-    $.lazyLoad.runQueue();
+    $.lazy(done);
+    $.lazy.runQueue();
   });
 
   test('run after load already called');
 
   test('grab script if callback is a string', function(done) {
     window.fixtureLoaded = done;
-    $.lazyLoad('fixtures/test.js');
-    $.lazyLoad.runQueue();
+    $.lazy('fixtures/test.js');
+    $.lazy.runQueue();
   });
 
   test('run in specific order', function(done) {
     var data = [];
-    $.lazyLoad(function() {
+    $.lazy(function() {
       data.push(2);
     }, 2);
 
-    $.lazyLoad(function() {
+    $.lazy(function() {
       data.push(1);
     }, 1);
 
-    $.lazyLoad(function() {
+    $.lazy(function() {
       assert.deepEqual(data, [1, 2]);
       done();
     }, 3);
 
-    $.lazyLoad.runQueue();
+    $.lazy.runQueue();
   });
 
   test('run on scroll', function(done) {
-    $.lazyLoad(done, 'scroll');
+    $.lazy(done, 'scroll');
     $(window).trigger('scroll');
   });
 
   test('run on mouse move', function(done) {
-    $.lazyLoad(done, 'mouse');
+    $.lazy(done, 'mouse');
     $('body').trigger('mousemove');
   });
 });

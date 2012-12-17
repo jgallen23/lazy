@@ -1,8 +1,8 @@
 {
-  "name": "lazyload",
+  "name": "lazy",
   "description": "Javascript lazy loading plugin",
-  "version": "0.1.0",
-  "homepage": "https://github.com/jgallen23/lazyload",
+  "version": "0.1.1",
+  "homepage": "https://github.com/jgallen23/lazy",
   "license": "MIT",
   "copyright": "Greg Allen",
   "dependencies": {
