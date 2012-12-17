@@ -1,0 +1,10 @@
+{
+  "name": "lazyload",
+  "description": "Javascript lazy loading plugin",
+  "version": "0.1.0",
+  "homepage": "https://github.com/jgallen23/lazyload",
+  "license": "MIT",
+  "copyright": "Greg Allen",
+  "dependencies": {
+  }
+}
