@@ -3,9 +3,9 @@
   "version": "0.0.0",
   "private": true,
   "devDependencies": {
-    "grunt": "~0.3.17",
-    "grunt-mocha": "~0.1.7",
-    "mocha": "~1.7.4",
+    "grunt": "~1.0.1",
+    "grunt-mocha": "~1.0.2",
+    "mocha": "~3.2.0",
     "grunt-reloadr": "~0.1.2"
   }
 }
